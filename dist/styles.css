@@ -45,12 +45,9 @@ body::after{content:"";position:fixed;top:-50%;left:-50%;width:200%;height:200%;
 .clock-colon{animation:blink 2s steps(1) infinite}@keyframes blink{50%{opacity:0}}
 .after-curfew .clock{color:var(--muted)}.clock-late{color:#ff5f4a}
 @media(max-width:809px){.clock-late{display:none}}
-/* after curfew: flashlight that follows the cursor */
-.flashlight{display:none;position:fixed;inset:0;z-index:98;pointer-events:none;--x:50vw;--y:40vh;background:radial-gradient(circle 240px at var(--x) var(--y),#ffc38a0d 0,transparent 70%),radial-gradient(circle 360px at var(--x) var(--y),transparent 0,#00000080 100%)}
-@media(hover:hover){.after-curfew .flashlight{display:block;animation:lights-down .8s ease both}}
-@keyframes lights-down{from{opacity:0}}
 /* wristband stamp when the email is copied */
 .stamp{position:fixed;z-index:999;pointer-events:none;transform:translate(-50%,-50%) rotate(var(--r,-8deg));padding:10px 16px 8px;border:3px double currentColor;border-radius:10px;color:#e0332b;font:600 18px/1 Geist,Arial,sans-serif;letter-spacing:-.03em;text-align:center;white-space:nowrap;mix-blend-mode:multiply;animation:stamp 2.4s cubic-bezier(.2,1.4,.4,1) both;-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='i'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 -.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23i)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='i'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 -.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23i)'/%3E%3C/svg%3E")}
 .stamp small{display:block;font:11px monospace;margin-top:5px;opacity:.8}
 .after-curfew .stamp{mix-blend-mode:normal;color:#ff4a3d}
 @keyframes stamp{0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--r)) scale(1.6)}12%{opacity:.92;transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}80%{opacity:.92}100%{opacity:0}}
+/* bouncer 404 */.not-found{gap:0}.not-found h1{font-size:clamp(1.5rem,3vw,2.25rem);font-weight:600;letter-spacing:-.04em;margin:10px 0 12px}.bouncer-note{color:#858585;margin-bottom:28px}.after-curfew .bouncer-note{color:var(--muted)}.bouncer-link{justify-self:center;background:#efefef;padding:12px 20px;border-radius:14px}.bouncer-link:hover{background:#e4e4e4}.after-curfew .bouncer-link{background:var(--chip)}.after-curfew .bouncer-link:hover{background:var(--chip-hover)}
