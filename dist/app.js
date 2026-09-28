@@ -39,3 +39,10 @@ const lowercaseText = document.createTreeWalker(document.body, NodeFilter.SHOW_T
 while(lowercaseText.nextNode()){const node=lowercaseText.currentNode;if(!['SCRIPT','STYLE'].includes(node.parentElement.tagName))node.nodeValue=node.nodeValue.toLowerCase();}
 document.querySelectorAll('[aria-label]').forEach(el=>el.setAttribute('aria-label',el.getAttribute('aria-label').toLowerCase()));
 document.title=document.title.toLowerCase();
+// Local-time clock in the top corner; also flips the site dark when curfew hits while the page is open.
+const clock=document.createElement('div');clock.className='clock';clock.setAttribute('aria-hidden','true');document.body.append(clock);
+function tick(){const now=new Date(),h=now.getHours();let forced=null;try{forced=sessionStorage.getItem('curfew')}catch(e){}
+const late=forced==='1'||(forced!=='0'&&(h>=23||h<5));document.documentElement.classList.toggle('after-curfew',late);
+const [time,ampm='']=now.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'}).toLowerCase().split(' ');const [hh,mm]=time.split(':');
+clock.innerHTML=`${hh}<span class="clock-colon">:</span>${mm}${ampm?' '+ampm:''}${late?' <span class="clock-late">· past curfew</span>':''}`}
+tick();setInterval(tick,1000);

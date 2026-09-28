@@ -40,3 +40,8 @@ body::after{content:"";position:fixed;top:-50%;left:-50%;width:200%;height:200%;
 .after-curfew .project-pagination a{background:#262626cc}.after-curfew .close-reel{background:var(--ink);color:var(--bg)}
 .after-curfew button:focus-visible,.after-curfew a:focus-visible{outline-color:var(--soft)}
 .after-curfew ::selection{background:#fff;color:#000}
+/* clock */
+.clock{position:fixed;top:16px;left:16px;height:48px;line-height:48px;z-index:99;font-family:monospace;font-size:12px;color:#858585;pointer-events:none;white-space:nowrap}
+.clock-colon{animation:blink 2s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+.after-curfew .clock{color:var(--muted)}.clock-late{color:#ff5f4a}
+@media(max-width:809px){.clock-late{display:none}}
