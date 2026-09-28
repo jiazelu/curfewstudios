@@ -46,3 +46,13 @@ const late=forced==='1'||(forced!=='0'&&(h>=23||h<5));document.documentElement.c
 const [time,ampm='']=now.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'}).toLowerCase().split(' ');const [hh,mm]=time.split(':');
 clock.innerHTML=`${hh}<span class="clock-colon">:</span>${mm}${ampm?' '+ampm:''}${late?' <span class="clock-late">· past curfew</span>':''}`}
 tick();setInterval(tick,1000);
+// After curfew, a soft flashlight follows the pointer (mouse devices only; styling gates it).
+const flashlight=document.createElement('div');flashlight.className='flashlight';flashlight.setAttribute('aria-hidden','true');document.body.append(flashlight);
+let lightFrame;addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;cancelAnimationFrame(lightFrame);lightFrame=requestAnimationFrame(()=>{flashlight.style.setProperty('--x',e.clientX+'px');flashlight.style.setProperty('--y',e.clientY+'px')})});
+// Clicking the email copies it and stamps "you're on the list"; if copying fails, the stamp shows the address and mail opens instead.
+function stampAt(a,e,note){const r=a.getBoundingClientRect(),x=r.left+r.width/2+36,y=r.top-26;
+const stamp=document.createElement('div');stamp.className='stamp';stamp.setAttribute('role','status');stamp.innerHTML=`you’re on the list<small>${note}</small>`;
+stamp.style.left=Math.min(Math.max(x,120),innerWidth-120)+'px';stamp.style.top=y+'px';stamp.style.setProperty('--r',(-4-Math.random()*9).toFixed(1)+'deg');
+document.body.append(stamp);setTimeout(()=>stamp.remove(),2400)}
+document.querySelectorAll('a.email').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const addr=`${a.dataset.user}@${a.dataset.domain}`;
+(navigator.clipboard?navigator.clipboard.writeText(addr):Promise.reject()).then(()=>stampAt(a,e,'email copied'),()=>{stampAt(a,e,addr);setTimeout(()=>{location.href=a.href},700)})}));
