@@ -13,3 +13,5 @@ body,button,input,.eyebrow,.new-tag{text-transform:lowercase}.card-image,.showre
 ::-moz-selection { background: #000; color: #fff; text-shadow: none; }
 
 .hero-content{width:min(480px,calc(100% - 48px));text-align:center}.hero-content h1{font-size:clamp(1.375rem,2.1vw,1.75rem);font-weight:600;line-height:1.15;letter-spacing:-.04em;margin-bottom:14px}.hero-content p{font-size:1rem;line-height:1.4;letter-spacing:-.03em}
+
+/* offerings menu + process */.offering-details{list-style:none;margin:20px 0 0;padding:0;color:#555;line-height:1.35}.offering-details li{padding:9px 0;border-bottom:1px solid #e6e6e6}.offering-details li:first-child{border-top:1px solid #e6e6e6}.offering-meta{font-family:monospace;font-size:12px;color:#858585;margin-top:16px}.process-steps{list-style:none;margin:0;padding:0}.process-steps li+li{margin-top:48px}.process-steps .offering-meta{margin:6px 0 10px}.offering-body{color:#555;line-height:1.35}
